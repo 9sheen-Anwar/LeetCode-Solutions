@@ -27,11 +27,10 @@ class Solution {
             }
         int len=temp.length;
         int median=(0+len-1)/2;
-        System.out.println(median);
-        if(len%2==0){
-            System.out.println(temp[median]);
+    
+        if(len%2==0)
             return (temp[median]+temp[median+1])/2f;
-        }
+        
         else
             return temp[median];
         
