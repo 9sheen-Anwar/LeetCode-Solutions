@@ -1,19 +1,21 @@
 class Solution {
     public int maximumNumberOfStringPairs(String[] words) {
-        int count=0;
-        StringBuilder s=new StringBuilder();
-        for(int i=0;i<words.length;i++){
-            for(int j=i+1;j<words.length;j++){
-               
-                s.append(words[j]);
-               // s.reverse().toString();
-                    if(words[i].equals(s.reverse().toString())){
-                        count++;
-                    }
-                s.delete(0,s.length());
-            }
-            
+
+        Map<String,Integer> map= new HashMap<>();
+
+        for(String s : words){
+            String rev = new StringBuilder(s).reverse().toString();
+            if(map.containsKey(rev))
+                map.put(rev, map.get(rev)+1);
+            else
+                map.put(s,0);
+
         }
+
+        int count=0;
+        for(int value : map.values())
+            count+=value;
+        
         return count;
         
     }
